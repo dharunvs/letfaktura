@@ -3,8 +3,7 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
 
-const chromePath =
-  "/opt/render/.cache/puppeteer/chrome/linux-126.0.6478.126/chrome-linux64/chrome";
+const chromePath = "./chrome-linux64/chrome";
 
 const corsOptions = {
   origin: true,
