@@ -3,6 +3,9 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
 
+const chromePath =
+  "/opt/render/.cache/puppeteer/chrome/linux-126.0.6478.126/chrome-linux64/chrome";
+
 const corsOptions = {
   origin: true,
   methods: ["POST"],
@@ -13,7 +16,9 @@ fastify.post("/generate-pdf", async (req, reply) => {
   const { pdfData } = req.body;
 
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      executablePath: chromePath, // Path to Chrome executable
+    });
     const page = await browser.newPage();
 
     let content = `<!DOCTYPE html>
